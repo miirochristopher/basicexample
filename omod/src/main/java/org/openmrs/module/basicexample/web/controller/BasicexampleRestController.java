@@ -29,11 +29,13 @@ public class BasicexampleRestController extends MainResourceController {
 	@RequestMapping(value = "/department/find/by/id/{id}", method = RequestMethod.GET)
 	public ResponseEntity<DepartmentResponse> getDepartmentById(@PathVariable Integer id) {
 		Department department = basicexampleService.getDepartmentById(id);
+		String safetyMeasures = department.getPatientSafetyMeasures();
 		DepartmentResponse departmentResponse = new DepartmentResponse();
 		if (department != null) {
 			departmentResponse.setDepartmentName(department.getDepartmentName());
 			departmentResponse.setLocation(department.getLocation());
 			departmentResponse.setDateCreated(department.getDateCreated());
+			departmentResponse.setDepartmentSafetyMeasures(safetyMeasures);
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NO_CONTENT);
@@ -43,11 +45,13 @@ public class BasicexampleRestController extends MainResourceController {
 	@RequestMapping(value = "/department/find/by/uuid/{uuid}", method = RequestMethod.GET)
 	public ResponseEntity<DepartmentResponse> getDepartmentByUuid(@PathVariable String uuid) {
 		Department department = basicexampleService.getDepartmentByUuid(uuid);
+		String safetyMeasures = department.getPatientSafetyMeasures();
 		DepartmentResponse departmentResponse = new DepartmentResponse();
 		if (department != null) {
 			departmentResponse.setDepartmentName(department.getDepartmentName());
 			departmentResponse.setLocation(department.getLocation());
 			departmentResponse.setDateCreated(department.getDateCreated());
+			departmentResponse.setDepartmentSafetyMeasures(safetyMeasures);
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NOT_FOUND);
@@ -58,10 +62,12 @@ public class BasicexampleRestController extends MainResourceController {
 	public ResponseEntity<DepartmentResponse> saveDepartment(@RequestBody Department department) {
 		try {
 			Department savedDepartment = basicexampleService.saveDepartment(department);
+			String safetyMeasures = savedDepartment.getPatientSafetyMeasures();
 			DepartmentResponse departmentResponse = new DepartmentResponse();
 			departmentResponse.setDepartmentName(savedDepartment.getDepartmentName());
 			departmentResponse.setLocation(savedDepartment.getLocation());
 			departmentResponse.setDateCreated(savedDepartment.getDateCreated());
+			departmentResponse.setDepartmentSafetyMeasures(safetyMeasures);
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		}
 		catch (APIException exception) {

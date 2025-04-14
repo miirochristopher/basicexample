@@ -36,40 +36,39 @@
                                  referencedColumnNames="user_id" />
     </changeSet> -->
 
-    <changeSet id="basicexample-2025-04-07-12-21" author="miirochristopher" runOnChange="true">
-		<preConditions onFail="MARK_RAN">
-			<not><tableExists tableName="department"/></not>
-		</preConditions>
-		<comment>
-			Creating the department table
-		</comment>
-		<createTable tableName="department">
-			<column name="id" type="int" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false"/>
-			</column>
-			<column name="name" type="varchar(255)" />
-			<column name="location" type="varchar(255)" />
-			<column name="owner" type="int" />
-			<column name="creator" type="int">
-				<constraints nullable="false"/>
-			</column>
-			<column name="date_created" type="datetime">
-				<constraints nullable="false"/>
-			</column>
-			<column name="changed_by" type="int"/>
-			<column name="date_changed" type="datetime"/>
-			<column name="voided" type="boolean" defaultValueBoolean="false">
-				<constraints nullable="false"/>
-			</column>
-			<column name="voided_by" type="int"/>
-			<column name="date_voided" type="datetime"/>
-			<column name="void_reason" type="varchar(255)" defaultValue="null"/>
-			<column name="uuid" type="char(38)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-		</createTable>
-        <addForeignKeyConstraint constraintName="department_owner_fk" baseTableName="department" baseColumnNames="owner"  referencedTableName="users"
-                                 referencedColumnNames="user_id" />
-    </changeSet>
- 
-</databaseChangeLog>
+     <changeSet id="basicexampleU-2025-04-15-17-31" author="Nakamatte">
+    <preConditions onFail="MARK_RAN">
+        <not><tableExists tableName="department"/></not>
+    </preConditions>
+    <comment>
+        Creating the department table
+    </comment>
+    <createTable tableName="department">
+        <column name="id" type="int" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="name" type="varchar(255)"/>
+        <column name="location" type="varchar(255)"/>
+        <column name="owner" type="int"/>
+        <column name="creator" type="int">
+            <constraints nullable="false"/>
+        </column>
+        <column name="date_created" type="datetime">
+            <constraints nullable="false"/>
+        </column>
+        <column name="changed_by" type="int"/>
+        <column name="date_changed" type="datetime"/>
+        <column name="voided" type="boolean" defaultValueBoolean="false">
+            <constraints nullable="false"/>
+        </column>
+        <column name="voided_by" type="int"/>
+        <column name="date_voided" type="datetime"/>
+        <column name="void_reason" type="varchar(255)" defaultValue="null"/>
+        <column name="uuid" type="char(38)">
+            <constraints nullable="false" unique="true"/>
+        </column>
+        <column name="patient-safety-measures" type="text"/>
+    </createTable>
+    <addForeignKeyConstraint constraintName="department_owner_fk" baseTableName="department" baseColumnNames="owner" referencedTableName="users"
+                             referencedColumnNames="user_id"/>
+</changeSet>

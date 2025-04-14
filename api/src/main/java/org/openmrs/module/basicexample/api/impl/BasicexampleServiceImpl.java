@@ -65,4 +65,13 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	public Department saveDepartment(Department department) throws APIException {
 		return dao.saveDepartment(department);
 	}
+	
+	@Override
+	public String getPatientSafetyMeasuresById(Integer id) throws APIException {
+		Department department = dao.getDepartmentById(id);
+		if (department != null) {
+			return department.getPatientSafetyMeasures();
+		}
+		return null;
+	}
 }

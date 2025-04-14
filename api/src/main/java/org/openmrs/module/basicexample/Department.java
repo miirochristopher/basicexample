@@ -24,6 +24,9 @@ public class Department extends BaseOpenmrsData {
 	@JoinColumn(name = "owner")
 	private User owner;
 	
+	@Column(name = "patient_safety_measures")
+	private String patientSafetyMeasures;
+	
 	@Override
 	public Integer getId() {
 		return id;
@@ -67,9 +70,17 @@ public class Department extends BaseOpenmrsData {
 		this.location = location;
 	}
 	
+	public String getPatientSafetyMeasures() {
+		return patientSafetyMeasures;
+	}
+	
+	public void setPatientSafetyMeasures(String patientSafetyMeasures) {
+		this.patientSafetyMeasures = patientSafetyMeasures;
+	}
+	
 	@Override
 	public String toString() {
 		return "Department{" + "id=" + id + ", departmentName='" + departmentName + '\'' + ", location='" + location + '\''
-		        + ", owner=" + owner + '}';
+		        + ", owner=" + owner + ", patientSafetyMeasures='" + patientSafetyMeasures + '\'' + '}';
 	}
 }

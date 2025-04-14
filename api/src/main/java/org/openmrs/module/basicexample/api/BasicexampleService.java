@@ -58,4 +58,8 @@ public interface BasicexampleService extends OpenmrsService {
 	@Authorized(BasicexampleConfig.MODULE_PRIVILEGE)
 	@Transactional
 	Department saveDepartment(Department department) throws APIException;
+	
+	@Authorized()
+	@Transactional(readOnly = true)
+	String getPatientSafetyMeasuresById(Integer id) throws APIException;
 }

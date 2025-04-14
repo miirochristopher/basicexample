@@ -9,6 +9,7 @@
  */
 package org.openmrs.module.basicexample.api.dao;
 
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.db.hibernate.DbSession;
 import org.openmrs.api.db.hibernate.DbSessionFactory;
@@ -48,4 +49,14 @@ public class BasicexampleDao {
 		getSession().saveOrUpdate(department);
 		return department;
 	}
+	
+	public String getPatientSafetyMeasuresById(Integer id) {
+		Department department = (Department) getSession().createCriteria(Department.class).add(Restrictions.eq("id", id))
+		        .uniqueResult();
+		if (department != null) {
+			return department.getPatientSafetyMeasures();
+		}
+		return null;
+	}
+	
 }
