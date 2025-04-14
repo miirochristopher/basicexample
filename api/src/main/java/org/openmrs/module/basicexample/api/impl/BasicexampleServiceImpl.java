@@ -62,6 +62,11 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	}
 	
 	@Override
+	public Department getlengthOfStayById(Integer id) throws APIException {
+		return dao.getDepartmentById(id);
+	}
+	
+	@Override
 	public Department saveDepartment(Department department) throws APIException {
 		return dao.saveDepartment(department);
 	}

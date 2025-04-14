@@ -19,6 +19,9 @@ public class Department extends BaseOpenmrsData {
 	@Column(name = "location")
 	private String location;
 	
+	@Column(name = "length_of_stay")
+	private String lengthOfStay;
+	
 	@Override
 	public Integer getId() {
 		return id;
@@ -54,9 +57,17 @@ public class Department extends BaseOpenmrsData {
 		this.location = location;
 	}
 	
+	public String getLengthOfStay() {
+		return lengthOfStay;
+	}
+	
+	public void setLengthOfStay(String lengthOfStay) {
+		this.lengthOfStay = lengthOfStay;
+	}
+	
 	@Override
 	public String toString() {
 		return "Department{" + "id=" + id + ", departmentName='" + departmentName + '\'' + ", location='" + location + '\''
-		        + '}';
+		        + ", lengthOfStay='" + lengthOfStay + '\'' + '}';
 	}
 }

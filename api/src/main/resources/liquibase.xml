@@ -57,5 +57,14 @@
         <addForeignKeyConstraint constraintName="department_owner_fk" baseTableName="department" baseColumnNames="owner"  referencedTableName="users"
                                  referencedColumnNames="user_id" />
     </changeSet>
- 
+
+	<changeSet id="2025-04-14-22:43" author="Timothy">
+	<addColumn tableName="department">
+		<column name="length_of_stay" type="char(255)">
+			<constraints nullable="false" unique="true"/>
+		</column>
+	</addColumn>
+	</changeSet>
+
+
 </databaseChangeLog>

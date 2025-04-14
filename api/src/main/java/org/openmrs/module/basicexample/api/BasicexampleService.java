@@ -55,6 +55,10 @@ public interface BasicexampleService extends OpenmrsService {
 	@Transactional(readOnly = true)
 	Department getDepartmentById(Integer id) throws APIException;
 	
+	@Authorized()
+	@Transactional(readOnly = true)
+	Department getlengthOfStayById(Integer id) throws APIException;
+	
 	@Authorized(BasicexampleConfig.MODULE_PRIVILEGE)
 	@Transactional
 	Department saveDepartment(Department department) throws APIException;
