@@ -16,7 +16,6 @@ import org.openmrs.module.basicexample.Department;
 import org.openmrs.module.basicexample.Item;
 import org.openmrs.module.basicexample.api.BasicexampleService;
 import org.openmrs.module.basicexample.api.dao.BasicexampleDao;
-import org.openmrs.util.PrivilegeConstants;
 
 public class BasicexampleServiceImpl extends BaseOpenmrsService implements BasicexampleService {
 	
@@ -63,7 +62,7 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	}
 	
 	@Override
-	public Department getLengthofStayById(Integer id) throws APIException {
+	public String getLengthofStayById(Integer id) throws APIException {
 		return dao.getLengthofStayById(id);
 	}
 	

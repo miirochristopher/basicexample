@@ -57,7 +57,7 @@ public interface BasicexampleService extends OpenmrsService {
 	
 	@Authorized()
 	@Transactional(readOnly = true)
-	Department getLengthofStayById(Integer id) throws APIException;
+	String getLengthofStayById(Integer id) throws APIException;
 	
 	@Authorized(BasicexampleConfig.MODULE_PRIVILEGE)
 	@Transactional
