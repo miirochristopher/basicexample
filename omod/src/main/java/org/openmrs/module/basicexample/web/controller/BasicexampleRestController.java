@@ -2,6 +2,9 @@ package org.openmrs.module.basicexample.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import liquibase.pro.packaged.id;
+
 import org.openmrs.api.APIException;
 import org.openmrs.module.basicexample.Department;
 import org.openmrs.module.basicexample.api.BasicexampleService;
@@ -36,7 +39,7 @@ public class BasicexampleRestController extends MainResourceController {
 			departmentResponse.setDateCreated(department.getDateCreated());
 			departmentResponse.setPatientSafetyMeasures(department.getPatientSafetyMeasures());
 			departmentResponse.setLengthofStay(department.getLengthofStay());
-
+			
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NO_CONTENT);
@@ -75,4 +78,14 @@ public class BasicexampleRestController extends MainResourceController {
 			throw new APIException(exception.getMessage());
 		}
 	}
+	
+	@RequestMapping(value = "/department/{id}/safety-measures", method = RequestMethod.GET)
+    public ResponseEntity<String> getPatientSafetyMeasuresByDepartmentId(@PathVariable Integer id) {
+    Department department = basicexampleService.getDepartmentById(id);
+    if (department != null) {
+        return new ResponseEntity<>(department.getPatientSafetyMeasures(), HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
 }

@@ -72,16 +72,16 @@ public class Department extends BaseOpenmrsData {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+	
 	public String getPatientSafetyMeasures() {
 		return patientSafetyMeasures;
 	}
 	
 	public void setPatientSafetyMeasures(String patientSafetyMeasures) {
 		this.patientSafetyMeasures = patientSafetyMeasures;
-
+		
 	}
-
+	
 	public String getLengthofStay() {
 		return lengthofStay;
 	}
@@ -89,16 +89,11 @@ public class Department extends BaseOpenmrsData {
 	public void setLengthofStay(String lengthofStay) {
 		this.lengthofStay = lengthofStay;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Department{" +
-				"id=" + id +
-				", departmentName='" + departmentName + '\'' +
-				", location='" + location + '\'' +
-				", lengthofStay='" + lengthofStay + '\'' +
-				", owner=" + owner +
-				", patientSafetyMeasures='" + patientSafetyMeasures + '\'' +
-				'}';
+		return "Department{" + "id=" + id + ", departmentName='" + departmentName + '\'' + ", location='" + location + '\''
+		        + ", lengthofStay='" + lengthofStay + '\'' + ", owner=" + owner + ", patientSafetyMeasures='"
+		        + patientSafetyMeasures + '\'' + '}';
 	}
 }
