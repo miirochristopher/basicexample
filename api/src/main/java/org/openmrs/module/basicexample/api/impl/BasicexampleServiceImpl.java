@@ -62,8 +62,8 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	}
 	
 	@Override
-	public String getLengthofStayById(Integer id) throws APIException {
-		return dao.getLengthofStayById(id);
+	public String getLengthOfStayByDepartmentId(Integer id) throws APIException {
+		return dao.getLengthOfStayByDepartmentId(id);
 	}
 	
 	@Override

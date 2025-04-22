@@ -35,8 +35,8 @@ public class BasicexampleRestController extends MainResourceController {
 			departmentResponse.setLocation(department.getLocation());
 			departmentResponse.setDateCreated(department.getDateCreated());
 			departmentResponse.setPatientSafetyMeasures(department.getPatientSafetyMeasures());
-			departmentResponse.setLengthofStay(department.getLengthofStay());
-
+			departmentResponse.setLengthOfStay(department.getLengthOfStay());
+			
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NO_CONTENT);
@@ -52,7 +52,20 @@ public class BasicexampleRestController extends MainResourceController {
 			departmentResponse.setLocation(department.getLocation());
 			departmentResponse.setDateCreated(department.getDateCreated());
 			departmentResponse.setPatientSafetyMeasures(department.getPatientSafetyMeasures());
-			departmentResponse.setLengthofStay(department.getLengthofStay());
+			departmentResponse.setLengthOfStay(department.getLengthOfStay());
+			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NOT_FOUND);
+		}
+	}
+	
+	@RequestMapping(value = "/find/LengthOfStay/by/DepartmentId/{id}", method = RequestMethod.GET)
+	public ResponseEntity<DepartmentResponse> getLengthOfStayByDepartmentId(@PathVariable int id) {
+		String findLOS = basicexampleService.getLengthOfStayByDepartmentId(id);
+		DepartmentResponse departmentResponse = new DepartmentResponse();
+		
+		if (findLOS != null) {
+			departmentResponse.setLengthOfStay(findLOS);
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<DepartmentResponse>(new DepartmentResponse(), HttpStatus.NOT_FOUND);
@@ -68,7 +81,7 @@ public class BasicexampleRestController extends MainResourceController {
 			departmentResponse.setLocation(savedDepartment.getLocation());
 			departmentResponse.setDateCreated(savedDepartment.getDateCreated());
 			departmentResponse.setPatientSafetyMeasures(savedDepartment.getPatientSafetyMeasures());
-			departmentResponse.setLengthofStay(savedDepartment.getLengthofStay());
+			departmentResponse.setLengthOfStay(savedDepartment.getLengthOfStay());
 			return new ResponseEntity<DepartmentResponse>(departmentResponse, HttpStatus.OK);
 		}
 		catch (APIException exception) {

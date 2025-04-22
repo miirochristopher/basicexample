@@ -40,10 +40,10 @@ public class BasicexampleDao {
 		return (Department) getSession().createCriteria(Department.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 	
-	public String getLengthofStayById(Integer id) {
+	public String getLengthOfStayByDepartmentId(Integer id) {
 		Department department = getDepartmentById(id);
 		if (department != null) {
-			return department.getLengthofStay();
+			return department.getLengthOfStay();
 		}
 		return null;
 	}

@@ -12,9 +12,8 @@ public class DepartmentResponse {
 	String location;
 	
 	Date dateCreated;
-
+	
 	String patientSafetyMeasures;
-
-	String lengthofStay;
-
+	
+	String lengthOfStay;
 }
