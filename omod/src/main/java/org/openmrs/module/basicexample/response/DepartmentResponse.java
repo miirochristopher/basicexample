@@ -15,7 +15,7 @@ public class DepartmentResponse {
 	
 	String patientSafetyMeasures;
 	
-	String lengthofStay;
+	String lengthOfStay;
 	
 	String patientSafety;
 	
