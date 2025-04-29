@@ -69,9 +69,11 @@ public class BasicexampleDao {
 		return "";
 	}
 	
-	public String updatePatientSafetyMeasuresByDepartmentId(Integer id) {
+	public String updatePatientSafetyMeasuresByDepartmentId(Integer id, String patientSafetyMeasures) {
 		Department department = getDepartmentById(id);
 		if (department != null) {
+			department.setPatientSafetyMeasures(patientSafetyMeasures);
+			getSession().saveOrUpdate(department);
 			return department.getPatientSafetyMeasures();
 		}
 		return null;

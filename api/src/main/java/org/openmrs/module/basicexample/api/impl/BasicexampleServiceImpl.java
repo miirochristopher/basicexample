@@ -89,7 +89,7 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	}
 	
 	@Override
-	public String updatePatientSafetyMeasuresByDepartmentId(Integer id) throws APIException {
-		return dao.updatePatientSafetyMeasuresByDepartmentId(id);
+	public String updatePatientSafetyMeasuresByDepartmentId(Integer id, String patientSafetyMeasures) throws APIException {
+		return dao.updatePatientSafetyMeasuresByDepartmentId(id, patientSafetyMeasures);
 	}
 }

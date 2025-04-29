@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller(value = "BasicexampleRestController")
+@Controller(value = "basicexampleRestController")
 @RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/" + "basicexample")
 public class BasicexampleRestController extends MainResourceController {
 	
@@ -102,10 +102,11 @@ public class BasicexampleRestController extends MainResourceController {
 	}
 	
 	@RequestMapping(value = "/update/patient/safety/by/id/{id}", method = RequestMethod.POST)
-	public ResponseEntity<String> updatePatientSafetyMeasuresByDepartmentId(@PathVariable Integer id, @RequestBody String newPatientSafetyMeasures) {
+	public ResponseEntity<String> updatePatientSafetyMeasuresByDepartmentId(@PathVariable Integer id, @RequestBody String patientSafetyMeasures) {
 		try {
-			basicexampleService.updatePatientSafetyMeasuresByDepartmentId(id);
-			return new ResponseEntity<>("Patient safety measures updated successfully for department ID: " + id, HttpStatus.OK);
+			basicexampleService.updatePatientSafetyMeasuresByDepartmentId(id, patientSafetyMeasures);
+			return new ResponseEntity<>("Patient safety measures updated successfully for department ID:" +
+					" " + id + " " + patientSafetyMeasures, HttpStatus.OK);
 		} catch (APIException e) {
 			return new ResponseEntity<>("Error updating patient safety measures: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}

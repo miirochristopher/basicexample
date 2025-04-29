@@ -73,6 +73,6 @@ public interface BasicexampleService extends OpenmrsService {
 	
 	@Authorized()
 	@Transactional
-	String updatePatientSafetyMeasuresByDepartmentId(Integer id) throws APIException;
+	String updatePatientSafetyMeasuresByDepartmentId(Integer id, String patientSafetyMeasures) throws APIException;
 	
 }
