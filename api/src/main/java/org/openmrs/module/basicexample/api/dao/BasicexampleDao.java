@@ -40,7 +40,7 @@ public class BasicexampleDao {
 		return (Department) getSession().createCriteria(Department.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 	
-	public Department getLengthofStayById(Integer id) {
+	public Department getLengthOfStayById(Integer id) {
 		return (Department) getSession().createCriteria(Department.class).add(Restrictions.eq("id", id)).uniqueResult();
 	}
 	
@@ -69,4 +69,13 @@ public class BasicexampleDao {
 		return "";
 	}
 	
+	public String updatePatientSafetyMeasuresByDepartmentId(Integer id, String patientSafetyMeasures) {
+		Department department = getDepartmentById(id);
+		if (department != null) {
+			department.setPatientSafetyMeasures(patientSafetyMeasures);
+			getSession().saveOrUpdate(department);
+			return department.getPatientSafetyMeasures();
+		}
+		return null;
+	}
 }

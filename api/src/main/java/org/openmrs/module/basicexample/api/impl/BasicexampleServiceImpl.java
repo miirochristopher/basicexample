@@ -17,6 +17,7 @@ import org.openmrs.module.basicexample.Item;
 import org.openmrs.module.basicexample.api.BasicexampleService;
 import org.openmrs.module.basicexample.api.dao.BasicexampleDao;
 import org.openmrs.util.PrivilegeConstants;
+import org.springframework.transaction.annotation.Transactional;
 
 public class BasicexampleServiceImpl extends BaseOpenmrsService implements BasicexampleService {
 	
@@ -63,8 +64,8 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 	}
 	
 	@Override
-	public Department getLengthofStayById(Integer id) throws APIException {
-		return dao.getLengthofStayById(id);
+	public Department getLengthOfStayById(Integer id) throws APIException {
+		return dao.getLengthOfStayById(id);
 	}
 	
 	@Override
@@ -85,5 +86,10 @@ public class BasicexampleServiceImpl extends BaseOpenmrsService implements Basic
 		} else {
 			return "";
 		}
+	}
+	
+	@Override
+	public String updatePatientSafetyMeasuresByDepartmentId(Integer id, String patientSafetyMeasures) throws APIException {
+		return dao.updatePatientSafetyMeasuresByDepartmentId(id, patientSafetyMeasures);
 	}
 }

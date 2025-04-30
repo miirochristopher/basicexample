@@ -21,7 +21,7 @@ public class Department extends BaseOpenmrsData {
 	private String location;
 	
 	@Column(name = "length_of_stay")
-	private String lengthofStay;
+	private String lengthOfStay;
 	
 	@ManyToOne
 	@JoinColumn(name = "owner")
@@ -85,12 +85,12 @@ public class Department extends BaseOpenmrsData {
 		
 	}
 	
-	public String getLengthofStay() {
-		return lengthofStay;
+	public String getLengthOfStay() {
+		return lengthOfStay;
 	}
 	
-	public void setLengthofStay(String lengthofStay) {
-		this.lengthofStay = lengthofStay;
+	public void setLengthOfStay(String lengthOfStay) {
+		this.lengthOfStay = lengthOfStay;
 	}
 	
 	public String getPatientSafety() {
@@ -104,7 +104,7 @@ public class Department extends BaseOpenmrsData {
 	@Override
 	public String toString() {
 		return "Department{" + "id=" + id + ", departmentName='" + departmentName + '\'' + ", location='" + location + '\''
-		        + ", lengthofStay='" + lengthofStay + '\'' + ", owner=" + owner + ", patientSafetyMeasures='"
+		        + ", lengthOfStay='" + lengthOfStay + '\'' + ", owner=" + owner + ", patientSafetyMeasures='"
 		        + patientSafetyMeasures + ", patientSafety='" + patientSafety + '\'' + '}';
 	}
 }
