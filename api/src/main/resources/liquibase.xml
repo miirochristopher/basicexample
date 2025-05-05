@@ -111,6 +111,41 @@
             <column name="patient_safety" type="VARCHAR(255)"/>
         </addColumn>
     </changeSet>
+    <changeSet id="doctor-entity-by-jkayongo" author="jkayongo " runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="doctors"/>
+            </not>
+        </preConditions>
+        <comment>
+            Creating the doctors table
+        </comment>
+        <createTable tableName="doctors">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="department" type="varchar(255)"/>
+            <column name="contact" type="varchar(255)"/>
+            <column name="creator" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="changed_by" type="int"/>
+            <column name="date_changed" type="datetime"/>
+            <column name="voided" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="voided_by" type="int"/>
+            <column name="date_voided" type="datetime"/>
+            <column name="void_reason" type="varchar(255)" defaultValue="null"/>
+            <column name="uuid" type="char(38)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
 
 </databaseChangeLog>
 
