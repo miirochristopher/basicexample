@@ -17,4 +17,16 @@ public interface DoctorService extends OpenmrsService {
 	@Authorized
 	@Transactional
 	List<Doctor> getAllDoctors() throws APIException;
+	
+	@Authorized
+	@Transactional
+	Doctor getDoctorById(Integer id) throws APIException;
+	
+	@Authorized
+	@Transactional
+	void updateDoctor(Doctor doctorToUpdate) throws APIException;
+	
+	@Authorized
+	@Transactional
+	void deleteDoctor(Doctor doctorToDelete) throws APIException;
 }

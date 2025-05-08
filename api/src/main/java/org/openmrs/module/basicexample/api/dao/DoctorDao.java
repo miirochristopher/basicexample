@@ -1,5 +1,6 @@
 package org.openmrs.module.basicexample.api.dao;
 
+import org.hibernate.criterion.Restrictions;
 import org.openmrs.api.db.hibernate.DbSession;
 import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.basicexample.Doctor;
@@ -30,4 +31,20 @@ public class DoctorDao {
 		List<Doctor> doctors = getSession().createCriteria(Doctor.class).list();
 		return doctors;
 	}
+	
+	//get a doctor by id
+	public Doctor getDoctorById(Integer id) {
+		return (Doctor) getSession().createCriteria(Doctor.class).add(Restrictions.eq("id", id)).uniqueResult();
+	}
+	
+	//update a doctor
+	public void updateDoctor(Doctor doctorToUpdate) {
+		getSession().update(doctorToUpdate);
+	}
+	
+	//delete a doctor
+	public void deleteDoctor(Doctor doctorToDelete) {
+		getSession().delete(doctorToDelete);
+	}
+	
 }

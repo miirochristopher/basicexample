@@ -4,7 +4,7 @@ import org.openmrs.BaseOpenmrsData;
 
 import javax.persistence.*;
 
-@Entity(name = "basicexample.Doctor")
+@Entity(name = "doctor")
 @Table(name = "doctors")
 public class Doctor extends BaseOpenmrsData {
 	

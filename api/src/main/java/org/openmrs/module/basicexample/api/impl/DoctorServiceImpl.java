@@ -28,4 +28,19 @@ public class DoctorServiceImpl extends BaseOpenmrsService implements DoctorServi
 	public List<Doctor> getAllDoctors() throws APIException {
 		return doctorDao.getAllDoctors();
 	}
+	
+	@Override
+	public Doctor getDoctorById(Integer id) throws APIException {
+		return doctorDao.getDoctorById(id);
+	}
+	
+	@Override
+	public void updateDoctor(Doctor doctorToUpdate) throws APIException {
+		doctorDao.updateDoctor(doctorToUpdate);
+	}
+	
+	@Override
+	public void deleteDoctor(Doctor doctorToDelete) throws APIException {
+		doctorDao.deleteDoctor(doctorToDelete);
+	}
 }
