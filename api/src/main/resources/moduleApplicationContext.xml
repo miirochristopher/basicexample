@@ -44,6 +44,24 @@
             <ref bean="transactionAttributeSource" />
         </property>
     </bean>
+    <!-- registering DoctorService as a bean -->
+    <bean id="doctorService"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <bean class="org.openmrs.module.basicexample.api.impl.DoctorServiceImpl">
+                <property name="doctorDao" ref="doctorDao" />
+            </bean>
+        </property>
+        <property name="preInterceptors">
+            <ref bean="serviceInterceptors" />
+        </property>
+        <property name="transactionAttributeSource">
+            <ref bean="transactionAttributeSource" />
+        </property>
+    </bean>
 
     <!-- Adds BasicexampleService to OpenMRS context so it can be accessed
     calling Context.getService(BasicexampleService.class) -->
@@ -52,6 +70,16 @@
             <list>
                 <value>org.openmrs.module.basicexample.api.BasicexampleService</value>
                 <ref bean="basicexample.BasicexampleService" />
+            </list>
+        </property>
+    </bean>
+    <!-- Adds DoctorService to OpenMRS context so it can be accessed
+    calling Context.getService(DoctorService.class) -->
+    <bean parent="serviceContext">
+        <property name="moduleService">
+            <list>
+                <value>org.openmrs.module.basicexample.api.DoctorService</value>
+                <ref bean="doctorService" />
             </list>
         </property>
     </bean>
